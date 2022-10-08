@@ -43,6 +43,5 @@ git push origin branch-name
 
 #Task
 
-- Sync Adapter not working in My code Application 
-- Improve UI  of Brain Samsher game
+- Improve calculator 
 
