@@ -15,7 +15,12 @@ body {
     transition: .250px;
     text-align: left;
 }
-
+input{
+    transition: 0.8s;
+}
+input:hover{
+    color: rgb(92, 232, 45);
+}
 #display {
     border: none;
     background: white;
