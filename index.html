@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.js"
+      integrity="sha512-BbVEDjbqdN3Eow8+empLMrJlxXRj5nEitiCAK5A1pUr66+jLVejo3PmjIaucRnjlB0P9R3rBUs3g5jXc8ti+fQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"
+      integrity="sha512-iphNRh6dPbeuPGIrQbCdbBF/qcqadKWLa35YPVfMZMHBSI6PLJh1om2xCTWhpVpmUyb4IvVS9iYnnYMkleVXLA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- for styling -->
+    <style>
+        h1{
+            text-align: center;
+            color: white;
+            background-color: black;
+            border: 1px solid black;
+        margin-left: auto;
+        margin-right: auto;
+        }
+      table {
+        border: 1px solid black;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      input[type="button"] {
+        width: 100%;
+        padding: 10px 10px;
+        background-color: rgb(28, 24, 24);
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        transition: 0.8s;
+        cursor: pointer;
+      }
+      input[type="button"]:hover {
+        background-color: rgb(92, 232, 45);
+      }
+      input[type="text"] {
+        padding: 20px 30px;
+        font-size: 24px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        border: 2px solid white;
+      }
+    </style>
+  </head>
+  <!-- create table -->
+
+  <body>
+    <h1 id="heading">Web Calculator</h1>
+    <table id="calcu">
+      <tr>
+        <td colspan="3"><input type="text" id="result" /></td>
+        <!-- clr() function will call clr to clear all value -->
+        <td><input type="button" value="c" onclick="clr()" /></td>
+      </tr>
+      <tr>
+        <!-- create button and assign value to each button -->
+        <!-- dis("1") will call function dis to display value -->
+        <td>
+          <input
+            type="button"
+            value="1"
+            onclick="dis('1')"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="2"
+            onclick="dis('2')"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="3"
+            onclick="dis('3')"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="/"
+            onclick="dis('/')"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            type="button"
+            value="4"
+            onclick="dis('4')"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="5"
+            onclick="dis('5')"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="6"
+            onclick="dis('6')"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="*"
+            onclick="dis('*')"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            type="button"
+            value="7"
+            onclick="dis('7')"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="8"
+            onclick="dis('8')"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="9"
+            onclick="dis('9')"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="-"
+            onclick="dis('-')"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            type="button"
+            value="0"
+            onclick="dis('0')"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="."
+            onclick="dis('.')"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <!-- solve function call function solve to evaluate value -->
+        <td><input type="button" value="=" onclick="solve()" /></td>
+
+        <td>
+          <input
+            type="button"
+            value="+"
+            onclick="dis('+')"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            type="button"
+            value="Bin to Dec"
+            onclick="binToDec()"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="Dec to Bin"
+            onclick="decToBin()"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="Dec to Oct"
+            onclick="decToOct()"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="Dec to Hex"
+            onclick="decToHex()"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            type="button"
+            value="C to K"
+            onclick="celsiusToKelvin()"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="C to F"
+            onclick="celsiusToFahrenheit()"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="F to K"
+            onclick="fahrenheitToKelvin()"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="F to C"
+            onclick="fahrenheitToCelsius()"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            type="button"
+            value="K to C"
+            onclick="kelvinToCelsius()"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="K to F"
+            onclick="kelvinToFahrenheit()"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="1's Complement"
+            onclick="onesComplement()"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+        <td>
+          <input
+            type="button"
+            value="2's Complement"
+            onclick="twosComplement()"
+            onkeydown="myFunction(event)"
+          />
+        </td>
+      </tr>
+    </table>
+
+    <script>
+      // Function that display value
+      function dis(val) {
+        document.getElementById("result").value += val;
+      }
+
+      function myFunction(event) {
+        if (
+          event.key == "0" ||
+          event.key == "1" ||
+          event.key == "2" ||
+          event.key == "3" ||
+          event.key == "4" ||
+          event.key == "5" ||
+          event.key == "6" ||
+          event.key == "7" ||
+          event.key == "8" ||
+          event.key == "9" ||
+          event.key == "+" ||
+          event.key == "-" ||
+          event.key == "*" ||
+          event.key == "/"
+        )
+          document.getElementById("result").value += event.key;
+      }
+
+      var cal = document.getElementById("calcu");
+      cal.onkeyup = function (event) {
+        if (event.keyCode === 13) {
+          console.log("Enter");
+          let x = document.getElementById("result").value;
+          console.log(x);
+          solve();
+        }
+      };
+
+      // Function that evaluates the digit and return result
+      function solve() {
+        let x = document.getElementById("result").value;
+        let y = math.evaluate(x);
+        document.getElementById("result").value = y;
+      }
+
+      // Function that clear the display
+      function clr() {
+        document.getElementById("result").value = "";
+      }
+      // Conversion functions
+      function binToDec() {
+        let binaryValue = document.getElementById("result").value;
+        let decimalValue = parseInt(binaryValue, 2);
+        document.getElementById("result").value = decimalValue;
+      }
+
+      function decToBin() {
+        let decimalValue = document.getElementById("result").value;
+        let binaryValue = (decimalValue >>> 0).toString(2);
+        document.getElementById("result").value = binaryValue;
+      }
+
+      function decToOct() {
+        let decimalValue = document.getElementById("result").value;
+        let octalValue = (decimalValue >>> 0).toString(8);
+        document.getElementById("result").value = octalValue;
+      }
+
+      function decToHex() {
+        let decimalValue = document.getElementById("result").value;
+        let hexValue = (decimalValue >>> 0).toString(16);
+        document.getElementById("result").value = hexValue;
+      }
+
+      function celsiusToKelvin() {
+        let celsiusValue = parseFloat(document.getElementById("result").value);
+        let kelvinValue = celsiusValue + 273.15;
+        document.getElementById("result").value = kelvinValue;
+      }
+
+      function celsiusToFahrenheit() {
+        let celsiusValue = parseFloat(document.getElementById("result").value);
+        let fahrenheitValue = (celsiusValue * 9) / 5 + 32;
+        document.getElementById("result").value = fahrenheitValue;
+      }
+
+      function fahrenheitToKelvin() {
+        let fahrenheitValue = parseFloat(document.getElementById("result").value);
+        let kelvinValue = ((fahrenheitValue - 32) * 5) / 9 + 273.15;
+        document.getElementById("result").value = kelvinValue;
+      }
+
+      function fahrenheitToCelsius() {
+        let fahrenheitValue = parseFloat(document.getElementById("result").value);
+        let celsiusValue = ((fahrenheitValue - 32) * 5) / 9;
+        document.getElementById("result").value = celsiusValue;
+      }
+      function kelvinToCelsius() {
+        let kelvinValue = parseFloat(document.getElementById("result").value);
+        let celsiusValue = kelvinValue - 273.15;
+        document.getElementById("result").value = celsiusValue;
+      }
+
+      function kelvinToFahrenheit() {
+        let kelvinValue = parseFloat(document.getElementById("result").value);
+        let fahrenheitValue = (kelvinValue - 273.15) * (9 / 5) + 32;
+        document.getElementById("result").value = fahrenheitValue;
+      }
+
+      function onesComplement() {
+        let binaryValue = document.getElementById("result").value;
+        let onesComplementValue = binaryValue
+          .split("")
+          .map((bit) => (bit === "0" ? "1" : "0"))
+          .join("");
+        document.getElementById("result").value = onesComplementValue;
+      }
+
+      function twosComplement() {
+        let binaryValue = document.getElementById("result").value;
+        let onesComplementValue = binaryValue
+          .split("")
+          .map((bit) => (bit === "0" ? "1" : "0"))
+          .join("");
+        let twosComplementValue = (
+          parseInt(onesComplementValue, 2) + 1
+        ).toString(2);
+        document.getElementById("result").value = twosComplementValue;
+      }
+    </script>
+  </body>
+</html>
